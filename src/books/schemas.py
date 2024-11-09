@@ -15,9 +15,9 @@ class Book(BaseModel):
     update_at: datetime
 
 
-class BookDetailModel(Book):
-    reviews: List[ReviewModel]
-    tags: List[TagModel]
+# class BookDetailModel(Book):
+#     reviews: List[ReviewModel]
+#     tags: List[TagModel]
 
 class BookCreateModel(BaseModel):
     title: str
