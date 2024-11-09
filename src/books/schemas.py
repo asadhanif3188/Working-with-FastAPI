@@ -31,6 +31,7 @@ class BookUpdateModel(BaseModel):
     title: str
     author: str
     publisher: str
+    published_date: date
     page_count: int
     language: str
 
