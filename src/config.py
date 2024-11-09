@@ -12,6 +12,3 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8"
         )
 
-
-ss = Settings()
-print(ss.DATABASE_URL)
