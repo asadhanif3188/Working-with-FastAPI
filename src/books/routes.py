@@ -10,6 +10,7 @@ from typing import List
 from sqlmodel.ext.asyncio.session import AsyncSession
 from fastapi.exceptions import HTTPException
 from .schemas import BookCreateModel, BookUpdateModel
+from uuid import UUID
 
 book_router = APIRouter()
 book_service = BookService()
@@ -27,8 +28,8 @@ async def create_book(book_data: BookCreateModel, session: AsyncSession = Depend
     # print("INFO ==>> data received ")
     # return book_data.model_dump()
 
-@book_router.get("/{book_uid}")
-async def get_book(book_uid: str, session: AsyncSession = Depends(get_session)) -> dict:
+@book_router.get("/{book_uid}", response_model=Book)
+async def get_book(book_uid: UUID, session: AsyncSession = Depends(get_session)) -> dict:
     book = await book_service.get_book(book_uid, session)
     if book:
         return book

@@ -4,6 +4,8 @@ from .schemas import BookCreateModel, BookUpdateModel
 from sqlmodel import select, desc
 from datetime import datetime
 import uuid
+from uuid import UUID
+
 class BookService:
     async def get_all_books(self, session: AsyncSession):
         statement = select(Book).order_by(desc(Book.created_at))
@@ -11,11 +13,10 @@ class BookService:
         return result.all()
 
     # -------------------------------
-    async def get_book(self, book_uid: str, session: AsyncSession):
+    async def get_book(self, book_uid: UUID, session: AsyncSession):
         statement = select(Book).where(Book.uid == book_uid)
         result = await session.exec(statement)
         book = result.first()
-
         return book if book is not None else None
 
     # -------------------------------
