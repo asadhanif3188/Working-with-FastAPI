@@ -18,6 +18,19 @@
 ## Description
 
 
+## DB Migrations 
+
+For DB migrations `alembic` framework has been used. 
+
+Command to initialize alembic environment.
+```
+alembic init -t async migrations 
+```
+
+After doing changes in different files, run following commnad. 
+```
+alembic revision --autogenerate -m "init"
+```
 
 
 ### Commands to run the code
